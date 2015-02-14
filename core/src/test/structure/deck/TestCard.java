@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import card.structure.deck.Card;
 
-public class testCard {
+public class TestCard {
 	private ArrayList<Card> cards = new ArrayList<Card>();
 	private int size = 1000;
 	private int[] numbers = new int[size];
