@@ -1,7 +1,5 @@
 package com.cards.game;
 
-import card.structure.deck.CardDeck;
-
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -12,7 +10,6 @@ public class CardsMain extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	String applicationName;
-	CardDeck c = new CardDeck();
 
 	@Override
 	public void create() {
