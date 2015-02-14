@@ -30,10 +30,12 @@ public class CardDeck {
 		}
 	}
 
-	public Card getCard(int posisjon) {
-		if (posisjon < cardDeck.size())
-			return cardDeck.get(posisjon);
-		else
+	public Card takeCard(int posisjon) {
+		if (posisjon < cardDeck.size()) {
+			Card card = cardDeck.get(posisjon);
+			cardDeck.remove(posisjon);
+			return card;
+		} else
 			return null;
 	}
 
@@ -41,6 +43,10 @@ public class CardDeck {
 		if (posisjon < cardDeck.size()) {
 			cardDeck.add(posisjon, card);
 		}
+	}
+
+	public int getDeckSize() {
+		return cardDeck.size();
 	}
 
 }
