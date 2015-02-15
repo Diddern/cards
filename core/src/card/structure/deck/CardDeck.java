@@ -18,14 +18,14 @@ public class CardDeck {
 	private void makeCardDeckWithJoker() {
 		makeCardDeck();
 		for (int i = 0; i < 2; i++) {
-			cardDeck.add(new Card(i, cardTypes[i]));
+			cardDeck.add(new Card(i, cardTypes[4]));
 		}
 	}
 
 	private void makeCardDeck() {
 		for (int i = 0; i < 4; i++) {
 			for (int k = 0; k < 13; k++) {
-				cardDeck.add(new Card(k, cardTypes[k]));
+				cardDeck.add(new Card(k, cardTypes[i]));
 			}
 		}
 	}
@@ -47,6 +47,10 @@ public class CardDeck {
 
 	public int getDeckSize() {
 		return cardDeck.size();
+	}
+
+	public Card lookAtCard(int posisjon) {
+		return cardDeck.get(posisjon);
 	}
 
 }
