@@ -8,6 +8,12 @@ import card.structure.deck.CardDeck;
 public class ShuffleCards {
 	private Random r;
 
+	/**
+	 * Tror ikke det går ann å teste denne skikkelig. Det e vel det som e
+	 * problemet med random.
+	 * 
+	 * @param deck
+	 */
 	public void shuffleCards(CardDeck deck) {
 		r = new Random();
 		int size = deck.getDeckSize();

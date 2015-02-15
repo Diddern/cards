@@ -1,8 +1,10 @@
 package test.structure.deck;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +19,7 @@ public class TestCardDeck {
 	private int size = 1000;
 	private String[] cardTypes = { "Spade", "Hearts", "Diamonds", "Clovers",
 			"Joker" };
+	private Random r = new Random();
 
 	@Before
 	public void setup() {
@@ -67,9 +70,40 @@ public class TestCardDeck {
 	@Test
 	public void testTakeCard() {
 		for (int q = 0; q < size; q++) {
+			int sizes = cardDeckWithJoker.get(q).getDeckSize();
+			int randomInterval = r.nextInt(sizes - 1);
+			Card card = cardDeckWithJoker.get(q).takeCard(randomInterval);
 
+			int newCardNumber = card.getNumber();
+			int cardNumber = cardDeckWithJoker.get(q)
+					.lookAtCard(randomInterval).getNumber();
+
+			String newCardType = card.getType();
+			String cardType = cardDeckWithJoker.get(q)
+					.lookAtCard(randomInterval).getType();
+			assertFalse(newCardNumber == cardNumber
+					&& newCardType.equals(cardType));
+			assertFalse(card.equals(cardDeckWithJoker.get(q)));
+			assertTrue(cardDeckWithJoker.get(q).getDeckSize() == sizes - 1);
 		}
 
 	}
 
+	@Test
+	public void testPutCardBackIn() {
+		for (int q = 0; q < size; q++) {
+			int randomsize = cardDeckWithJoker.get(q).getDeckSize() - 1;
+			int takeRandom = r.nextInt(randomsize);
+			Card card = cardDeckWithJoker.get(q).takeCard(takeRandom);
+
+			int putRandom = r.nextInt(randomsize - 1);
+
+			assertFalse(cardDeckWithJoker.get(q).lookAtCard(putRandom)
+					.equals(card));
+
+			cardDeckWithJoker.get(q).putCardBackInn(putRandom, card);
+			assertTrue(cardDeckWithJoker.get(q).lookAtCard(putRandom)
+					.equals(card));
+		}
+	}
 }
