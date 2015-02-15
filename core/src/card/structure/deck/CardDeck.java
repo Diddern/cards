@@ -1,6 +1,7 @@
 package card.structure.deck;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CardDeck {
 
@@ -111,6 +112,12 @@ public class CardDeck {
 	 */
 	public Card lookAtCard(int posisjon) {
 		return cardDeck.get(posisjon);
+	}
+
+	public void shuffleCards() {
+		for (int i = 0; i < 10; i++) {
+			Collections.shuffle(cardDeck);
+		}
 	}
 
 }

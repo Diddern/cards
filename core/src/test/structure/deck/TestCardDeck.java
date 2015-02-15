@@ -106,4 +106,50 @@ public class TestCardDeck {
 					.equals(card));
 		}
 	}
+
+	/**
+	 * Tester om kortene er blandet. Siden det ikke kan vær helt blandet, så den
+	 * går via en faktor....
+	 */
+	@Test
+	public void testShuffle() {
+		int errormargin = 10;
+		for (int i = 0; i < size; i++) {
+			CardDeck cdOldWithJoker = cardDeckWithJoker.get(i);
+			CardDeck cdOldWithoutJoker = cardDeckWithoutJoker.get(i);
+
+			CardDeck newDeckWithJoker = new CardDeck(true);
+			CardDeck newDeckWithoutJoker = new CardDeck(false);
+
+			assertTrue(cdOldWithJoker.getDeckSize() == newDeckWithJoker
+					.getDeckSize());
+			assertTrue(cdOldWithoutJoker.getDeckSize() == newDeckWithoutJoker
+					.getDeckSize());
+
+			int randomMargin1 = 0;
+			int randomMargin2 = 0;
+
+			cdOldWithJoker.shuffleCards();
+			cdOldWithoutJoker.shuffleCards();
+
+			for (int k = 0; k < cdOldWithJoker.getDeckSize() - 1; k++) {
+
+				if (newDeckWithJoker.lookAtCard(k).equalsTo(
+						cdOldWithJoker.lookAtCard(k))) {
+					randomMargin1++;
+				}
+			}
+
+			for (int k = 0; k < cdOldWithoutJoker.getDeckSize(); k++) {
+				if (newDeckWithoutJoker.lookAtCard(k).equalsTo(
+						cdOldWithoutJoker.lookAtCard(k))) {
+					randomMargin2++;
+				}
+
+			}
+
+			assertTrue(randomMargin1 < errormargin);
+			assertTrue(randomMargin2 < errormargin);
+		}
+	}
 }
