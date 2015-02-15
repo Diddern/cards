@@ -111,6 +111,7 @@ public class TestCardDeck {
 	 * Tester om kortene er blandet. Siden det ikke kan vær helt blandet, så den
 	 * går via en faktor....
 	 */
+
 	@Test
 	public void testShuffle() {
 		int errormargin = 10;
