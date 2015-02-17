@@ -112,6 +112,10 @@ public class CardDeck {
 		return cardDeck.get(posisjon);
 	}
 
+	/**
+	 * Stokker kortstokket slik at den blir random.
+	 * 
+	 */
 	public void shuffleCards() {
 		for (int i = 0; i < 10; i++) {
 			cardDeck.shuffle();
