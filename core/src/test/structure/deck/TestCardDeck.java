@@ -96,13 +96,13 @@ public class TestCardDeck {
 			int takeRandom = r.nextInt(randomsize);
 			Card card = cardDeckWithJoker.get(q).takeCard(takeRandom);
 
-			int putRandom = r.nextInt(randomsize - 1);
+			int putRandom = randomsize - 1;
 
 			assertFalse(cardDeckWithJoker.get(q).lookAtCard(putRandom)
 					.equals(card));
 
-			cardDeckWithJoker.get(q).putCardBackInn(putRandom, card);
-			assertTrue(cardDeckWithJoker.get(q).lookAtCard(putRandom)
+			cardDeckWithJoker.get(q).putCardBackInn(card);
+			assertTrue(cardDeckWithJoker.get(q).lookAtCard(randomsize)
 					.equals(card));
 		}
 	}

@@ -1,7 +1,6 @@
 package card.structure.deck;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import com.badlogic.gdx.utils.Array;
 
 public class CardDeck {
 
@@ -9,7 +8,7 @@ public class CardDeck {
 	 * ArrayListen er for å holde kortene. Korttypene er puttet i en streng
 	 * liste for å gjør initialiseringen enklere.
 	 */
-	private ArrayList<Card> cardDeck = new ArrayList<Card>();
+	private Array<Card> cardDeck = new Array<Card>();
 	String[] cardTypes = { "Spade", "Hearts", "Diamonds", "Clovers", "Joker" };
 
 	/**
@@ -60,7 +59,7 @@ public class CardDeck {
 	 *         NULL.
 	 */
 	public Card takeCard(int posisjon) {
-		if (posisjon < cardDeck.size()) {
+		if (posisjon < cardDeck.size) {
 			Card card = lookAtCard(posisjon);
 			removeCard(posisjon);
 			return card;
@@ -76,21 +75,20 @@ public class CardDeck {
 	 */
 
 	public void removeCard(int posisjon) {
-		cardDeck.remove(posisjon);
+		cardDeck.removeIndex(posisjon);
 	}
 
 	/**
-	 * Metoden putter kortet tilbake i kortstokken.
+	 * Metoden putter kortet tilbake i enden av kortstokken.
 	 * 
-	 * @param posisjon
-	 *            : posisjonen kortet skal bli puttet tilbake i.
+	 * 
 	 * @param card
 	 *            : Kortet som skal bli puttet tilbake.
 	 */
-	public void putCardBackInn(int posisjon, Card card) {
-		if (posisjon < cardDeck.size()) {
-			cardDeck.add(posisjon, card);
-		}
+	public void putCardBackInn(Card card) {
+		cardDeck.add(card);
+		;
+		;
 	}
 
 	/**
@@ -100,7 +98,7 @@ public class CardDeck {
 	 */
 
 	public int getDeckSize() {
-		return cardDeck.size();
+		return cardDeck.size;
 	}
 
 	/**
@@ -116,7 +114,7 @@ public class CardDeck {
 
 	public void shuffleCards() {
 		for (int i = 0; i < 10; i++) {
-			Collections.shuffle(cardDeck);
+			cardDeck.shuffle();
 		}
 	}
 
