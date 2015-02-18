@@ -16,10 +16,14 @@ public class Player {
 		hand = this.hand;
 	}
 
-	public void getCard(Card c) {
+	public void giveCard(Card c) {
 		if (!hand.isHandFull()) {
 			hand.addCardToHand(c);
 		}
+	}
+
+	public Hand lookAtHand() {
+		return hand;
 	}
 
 }

@@ -8,4 +8,8 @@ package game.structure;
  */
 public class Game {
 
+	public Game() {
+
+	}
+
 }
