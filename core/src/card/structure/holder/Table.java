@@ -64,17 +64,6 @@ public class Table {
 	}
 
 	/**
-	 * checks if the given card exists on the table;
-	 * 
-	 * @param c
-	 *            card that will be checked
-	 * @return true if it exists;
-	 */
-	public boolean checkIfCardIsOnTable(Card c) {
-		return cardsOnTable.contains(c, true);
-	}
-
-	/**
 	 * Finds the index of the specified card.
 	 * 
 	 * @param c
@@ -85,25 +74,72 @@ public class Table {
 		return cardsOnTable.indexOf(c, true);
 	}
 
-	public Card getBiggestCardOnHand() {
+	/**
+	 * This method returns the biggest card in the deck.
+	 * 
+	 * @return The biggest card on deck
+	 */
+	public Card getBiggestCard() {
 		return a.getBiggestCardOnHand(cardsOnTable);
 	}
 
+	/**
+	 * sends an array of the cards of this type.
+	 * 
+	 * @param type
+	 *            the type that will be checked out.
+	 * @return the array of the types.
+	 */
 	public Array<Card> getCardsOfThisType(Card card) {
 		return a.getCardsOfThisType(card, cardsOnTable);
 	}
 
+	/**
+	 * Checks if there is any cards of this type on your hand.
+	 * 
+	 * @param type
+	 *            the type to check up against
+	 * @return true if there is any.
+	 */
 	public boolean hasCardsOfThisType(Card card) {
 		return a.hasCardsOfThisType(card, cardsOnTable);
 
 	}
 
+	/**
+	 * checks if a card with this rank is on this hand.
+	 * 
+	 * @param c
+	 *            Card that will be checked
+	 * @return true if it exists.
+	 */
 	public boolean hasCardOfThisRank(Card card) {
 		return a.hasCardOfThisRank(card, cardsOnTable);
 	}
 
+	/**
+	 * returns an array with the cards with the rank of this card
+	 * 
+	 * @param card
+	 *            the card that will be checked
+	 * @return an array with the cards of this rank
+	 */
 	public Array<Card> getCardsOfThisRank(Card card) {
 		return a.getCardsOfThisRank(card, cardsOnTable);
+	}
+
+	/**
+	 * Returns a card at the specified position in the deck you give
+	 * 
+	 * @param i
+	 *            position
+	 * @param cardDeck
+	 *            the deck you give
+	 * @return the specific card.
+	 */
+
+	public Card getCardAtPosition(int i) {
+		return a.getCardAtPosition(i, cardsOnTable);
 	}
 
 }

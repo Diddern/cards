@@ -60,25 +60,69 @@ public class Hand {
 		cardsOnHand.add(c);
 	}
 
+	/**
+	 * This method returns the biggest card on the deck.
+	 * 
+	 * @return The biggest card on deck
+	 */
 	public Card getBiggestCardOnHand() {
 		return a.getBiggestCardOnHand(cardsOnHand);
 	}
 
+	/**
+	 * sends an array of the cards of this type.
+	 * 
+	 * @param type
+	 *            the type that will be checked out.
+	 * @return the array of the types.
+	 */
 	public Array<Card> getCardsOfThisType(Card card) {
 		return a.getCardsOfThisType(card, cardsOnHand);
 	}
 
+	/**
+	 * Checks if there is any cards of this type on your hand.
+	 * 
+	 * @param type
+	 *            the type to check up against
+	 * @return true if there is any.
+	 */
 	public boolean hasCardsOfThisType(Card card) {
 		return a.hasCardsOfThisType(card, cardsOnHand);
 
 	}
 
+	/**
+	 * checks if a card with this rank is on this hand.
+	 * 
+	 * @param c
+	 *            Card that will be checked
+	 * @return true if it exists.
+	 */
 	public boolean hasCardOfThisRank(Card card) {
 		return a.hasCardOfThisRank(card, cardsOnHand);
 	}
 
+	/**
+	 * returns an array of the cards with the rank of this card
+	 * 
+	 * @param card
+	 *            the card that will be checked
+	 * @return an array with the cards of this rank
+	 */
 	public Array<Card> getCardsOfThisRank(Card card) {
 		return a.getCardsOfThisRank(card, cardsOnHand);
+	}
+
+	/**
+	 * Returns a card at the specified position in the deck you give
+	 * 
+	 * @param i
+	 *            position
+	 * @return the specific card.
+	 */
+	public Card getCardAtPosition(int i) {
+		return a.getCardAtPosition(i, cardsOnHand);
 	}
 
 }

@@ -4,6 +4,8 @@ import card.structure.deck.Card;
 import card.structure.holder.Hand;
 import card.structure.holder.Table;
 
+import com.badlogic.gdx.utils.Array;
+
 /**
  * If there are multiple hands of the same rank at the showdown,the pot is
  * divided equally between the winning players.
@@ -44,8 +46,13 @@ import card.structure.holder.Table;
  */
 public class PokerData {
 
-	public Card onePair(Hand h, Table t) {
-
+	public Array<Card> onePair(Hand h, Table t) {
+		Array<Card> pairs = new Array<Card>();
+		for (int i = 0; i < h.getHandSize(); i++) {
+			if (t.hasCardOfThisRank(h.getCardAtPosition(i))) {
+				pairs = t.getCardsOfThisRank(h.getCardAtPosition(i));
+			}
+		}
 		return null;
 	}
 

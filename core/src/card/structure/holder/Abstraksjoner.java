@@ -18,7 +18,7 @@ public class Abstraksjoner {
 	}
 
 	/**
-	 * returns the card with the rank of this card
+	 * returns an array with the cards with the rank of this card
 	 * 
 	 * @param card
 	 *            the card that will be checked
@@ -66,7 +66,7 @@ public class Abstraksjoner {
 	/**
 	 * This method returns the biggest card on the deck.
 	 * 
-	 * @return
+	 * @return The biggest card on deck
 	 */
 	public Card getBiggestCardOnHand(Array<Card> cardDeck) {
 		int score = 0;
@@ -79,6 +79,20 @@ public class Abstraksjoner {
 
 		}
 		return cardDeck.get(index);
+	}
+
+	/**
+	 * Returns a card at the specified position in the deck you give
+	 * 
+	 * @param i
+	 *            position
+	 * @param cardDeck
+	 *            the deck you give
+	 * @return the specific card.
+	 */
+	public Card getCardAtPosition(int i, Array<Card> cardDeck) {
+		return cardDeck.get(i);
+
 	}
 
 }
