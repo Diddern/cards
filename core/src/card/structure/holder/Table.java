@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.Array;
  */
 public class Table {
 
+	private Abstraksjoner a = new Abstraksjoner();
 	private CardDeck cardDeck;
 	private Array<Player> players;
 	private Array<Card> cardsOnTable;
@@ -60,6 +61,49 @@ public class Table {
 	 */
 	private void addACardToTable() {
 		cardsOnTable.add(cardDeck.takeCard(cardDeck.getDeckSize() - 1));
+	}
+
+	/**
+	 * checks if the given card exists on the table;
+	 * 
+	 * @param c
+	 *            card that will be checked
+	 * @return true if it exists;
+	 */
+	public boolean checkIfCardIsOnTable(Card c) {
+		return cardsOnTable.contains(c, true);
+	}
+
+	/**
+	 * Finds the index of the specified card.
+	 * 
+	 * @param c
+	 *            the card that is gonna be found the index of.
+	 * @return the index of the card.
+	 */
+	public int getIndexOfCardOnTable(Card c) {
+		return cardsOnTable.indexOf(c, true);
+	}
+
+	public Card getBiggestCardOnHand() {
+		return a.getBiggestCardOnHand(cardsOnTable);
+	}
+
+	public Array<Card> getCardsOfThisType(Card card) {
+		return a.getCardsOfThisType(card, cardsOnTable);
+	}
+
+	public boolean hasCardsOfThisType(Card card) {
+		return a.hasCardsOfThisType(card, cardsOnTable);
+
+	}
+
+	public boolean hasCardOfThisRank(Card card) {
+		return a.hasCardOfThisRank(card, cardsOnTable);
+	}
+
+	public Array<Card> getCardsOfThisRank(Card card) {
+		return a.getCardsOfThisRank(card, cardsOnTable);
 	}
 
 }

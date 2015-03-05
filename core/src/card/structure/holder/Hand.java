@@ -12,7 +12,8 @@ import com.badlogic.gdx.utils.Array;
  */
 public class Hand {
 
-	private Array<Card> cardsOnHand = new Array<Card>();
+	private Abstraksjoner a = new Abstraksjoner();
+	private Array<Card> cardsOnHand;
 
 	private int size;
 
@@ -24,6 +25,7 @@ public class Hand {
 	 */
 	public Hand(int size) {
 		this.size = size;
+		cardsOnHand = new Array<Card>();
 	}
 
 	/**
@@ -39,6 +41,15 @@ public class Hand {
 	}
 
 	/**
+	 * gives you the size of the hand
+	 * 
+	 * @return the integer size
+	 */
+	public int getHandSize() {
+		return cardsOnHand.size;
+	}
+
+	/**
 	 * if there is space left in the hand, then a card will be added to the
 	 * hand. Does not check if the hand is full.
 	 * 
@@ -49,8 +60,25 @@ public class Hand {
 		cardsOnHand.add(c);
 	}
 
-	public Array<Card> getHand() {
-		return cardsOnHand;
+	public Card getBiggestCardOnHand() {
+		return a.getBiggestCardOnHand(cardsOnHand);
+	}
+
+	public Array<Card> getCardsOfThisType(Card card) {
+		return a.getCardsOfThisType(card, cardsOnHand);
+	}
+
+	public boolean hasCardsOfThisType(Card card) {
+		return a.hasCardsOfThisType(card, cardsOnHand);
+
+	}
+
+	public boolean hasCardOfThisRank(Card card) {
+		return a.hasCardOfThisRank(card, cardsOnHand);
+	}
+
+	public Array<Card> getCardsOfThisRank(Card card) {
+		return a.getCardsOfThisRank(card, cardsOnHand);
 	}
 
 }

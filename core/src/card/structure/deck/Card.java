@@ -44,10 +44,19 @@ public class Card {
 	 * @return true if it is equal
 	 */
 	public boolean equalsTo(Card card) {
-		if (card.getNumber() == number) {
-			if (type.equals(card.getType()))
+		if (sameRank(card)) {
+			if (sameType(card))
 				return true;
 		}
 		return false;
+	}
+
+	public boolean sameRank(Card c) {
+		return c.getNumber() == number;
+
+	}
+
+	public boolean sameType(Card c) {
+		return c.type.equals(type);
 	}
 }

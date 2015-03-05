@@ -56,17 +56,8 @@ public class PokerData {
 	 *            The hand of the player
 	 * @return the Card that is the highest.
 	 */
-	public Card highCard(Hand h) {
-		int index = 0;
-		int score = 0;
-		for (int i = 0; i < h.getHand().size; i++) {
-			if (h.getHand().get(i).getNumber() >= score) {
-				score = h.getHand().get(i).getNumber();
-				index = i;
-			}
-		}
-
-		return h.getHand().get(index);
+	public Card highCard(Hand hand) {
+		return hand.getBiggestCardOnHand();
 	}
 
 }
