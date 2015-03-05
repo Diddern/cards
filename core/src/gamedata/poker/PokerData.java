@@ -1,7 +1,8 @@
 package gamedata.poker;
 
-import game.structure.Constants;
-import perspective.player.Player;
+import card.structure.deck.Card;
+import card.structure.holder.Hand;
+import card.structure.holder.Table;
 
 /**
  * If there are multiple hands of the same rank at the showdown,the pot is
@@ -43,10 +44,29 @@ import perspective.player.Player;
  */
 public class PokerData {
 
-	public int StraightFlush(Constants c, Player p) {
-		for (int i = 0; i < c.getTableSize(); i++) {
+	public Card onePair(Hand h, Table t) {
+
+		return null;
+	}
+
+	/**
+	 * Returns the highest card on hand.
+	 * 
+	 * @param h
+	 *            The hand of the player
+	 * @return the Card that is the highest.
+	 */
+	public Card highCard(Hand h) {
+		int index = 0;
+		int score = 0;
+		for (int i = 0; i < h.getHand().size; i++) {
+			if (h.getHand().get(i).getNumber() >= score) {
+				score = h.getHand().get(i).getNumber();
+				index = i;
+			}
 		}
-		return 0;
+
+		return h.getHand().get(index);
 	}
 
 }

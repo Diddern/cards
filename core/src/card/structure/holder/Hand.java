@@ -49,4 +49,8 @@ public class Hand {
 		cardsOnHand.add(c);
 	}
 
+	public Array<Card> getHand() {
+		return cardsOnHand;
+	}
+
 }
