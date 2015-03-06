@@ -1,11 +1,5 @@
 package gamedata.poker;
 
-import card.structure.deck.Card;
-import card.structure.holder.Hand;
-import card.structure.holder.Table;
-
-import com.badlogic.gdx.utils.Array;
-
 /**
  * If there are multiple hands of the same rank at the showdown,the pot is
  * divided equally between the winning players.
@@ -45,26 +39,5 @@ import com.badlogic.gdx.utils.Array;
  *
  */
 public class PokerData {
-
-	public Array<Card> onePair(Hand h, Table t) {
-		Array<Card> pairs = new Array<Card>();
-		for (int i = 0; i < h.getHandSize(); i++) {
-			if (t.hasCardOfThisRank(h.getCardAtPosition(i))) {
-				pairs = t.getCardsOfThisRank(h.getCardAtPosition(i));
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * Returns the highest card on hand.
-	 * 
-	 * @param h
-	 *            The hand of the player
-	 * @return the Card that is the highest.
-	 */
-	public Card highCard(Hand hand) {
-		return hand.getBiggestCardOnHand();
-	}
 
 }
