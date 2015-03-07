@@ -9,13 +9,14 @@ public class QuickSort {
 	private Array<Card> cards;
 	private int number;
 
-	public void sort(Array<Card> card) {
+	public Array<Card> sort(Array<Card> card) {
 		// check for empty or null array
 		if (card == null || card.size == 0)
-			return;
+			return cards;
 		cards = card;
 		number = card.size;
 		quicksort(0, number - 1);
+		return cards;
 	}
 
 	private void quicksort(int low, int high) {

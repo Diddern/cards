@@ -31,10 +31,4 @@ public class Types extends Pairs {
 		return t.getCardsOfThisType(h.getCardAtPosition(i));
 	}
 
-	private void sort(Array<Card> card) {
-		for (int i = 0; i < types.size; i++) {
-			qs.sort(types.get(i));
-		}
-	}
-
 }
