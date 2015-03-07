@@ -8,9 +8,11 @@ import com.badlogic.gdx.utils.Array;
 
 public class Types extends Pairs {
 	protected Array<Array<Card>> types;
+	private QuickSort qs;
 
 	public Types(Hand hand, Table table) {
 		super(hand, table);
+		qs = new QuickSort();
 	}
 
 	public void getTypes() {
@@ -27,6 +29,12 @@ public class Types extends Pairs {
 
 	private Array<Card> getCardOfThisType(int i) {
 		return t.getCardsOfThisType(h.getCardAtPosition(i));
+	}
+
+	private void sort(Array<Card> card) {
+		for (int i = 0; i < types.size; i++) {
+			qs.sort(types.get(i));
+		}
 	}
 
 }
