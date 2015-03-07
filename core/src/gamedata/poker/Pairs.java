@@ -8,9 +8,9 @@ import com.badlogic.gdx.utils.Array;
 
 public class Pairs {
 
-	private Array<Array<Card>> pairs;
-	private Hand h;
-	private Table t;
+	protected Array<Array<Card>> pairs;
+	protected Hand h;
+	protected Table t;
 
 	public Pairs(Hand hand, Table table) {
 		pairs = new Array<Array<Card>>();
@@ -20,17 +20,17 @@ public class Pairs {
 
 	public void getPairs() {
 		for (int i = 0; i < h.getHandSize(); i++) {
-			if (hasCard(i)) {
-				pairs.add(getCards(i));
+			if (hasCardOfThisRank(i)) {
+				pairs.add(getCardsOfThisRank(i));
 			}
 		}
 	}
 
-	private boolean hasCard(int i) {
+	private boolean hasCardOfThisRank(int i) {
 		return t.hasCardOfThisRank(h.getCardAtPosition(i));
 	}
 
-	private Array<Card> getCards(int i) {
+	private Array<Card> getCardsOfThisRank(int i) {
 		return t.getCardsOfThisRank(h.getCardAtPosition(i));
 	}
 

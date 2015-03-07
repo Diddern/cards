@@ -1,5 +1,8 @@
 package gamedata.poker;
 
+import card.structure.holder.Hand;
+import card.structure.holder.Table;
+
 /**
  * If there are multiple hands of the same rank at the showdown,the pot is
  * divided equally between the winning players.
@@ -38,6 +41,10 @@ package gamedata.poker;
  * @author Bobby
  *
  */
-public class PokerData {
+public class PokerData extends Types {
+
+	public PokerData(Hand hand, Table table) {
+		super(hand, table);
+	}
 
 }

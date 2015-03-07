@@ -22,7 +22,7 @@ public class GamesTypes {
 	 * All Constant classes
 	 */
 
-	private Array<Player> players = new Array<Player>();
+	private Array<Player> players;
 	private TexasHoldem thisGame;
 	private Table t;
 	private CardDeck deck;
@@ -33,6 +33,7 @@ public class GamesTypes {
 	 */
 	public GamesTypes() {
 		thisGame = new TexasHoldem();
+		players = new Array<Player>();
 	}
 
 	/**
@@ -74,6 +75,10 @@ public class GamesTypes {
 	 */
 	public void makeTable() {
 		t = new Table(deck, players);
+	}
+
+	public int getWinner() {
+		return thisGame.getWinner(players, t);
 	}
 
 }
