@@ -1,8 +1,6 @@
 package card.structure.holder;
 
-import perspective.player.Player;
 import card.structure.deck.Card;
-import card.structure.deck.CardDeck;
 
 import com.badlogic.gdx.utils.Array;
 
@@ -15,8 +13,6 @@ import com.badlogic.gdx.utils.Array;
 public class Table {
 
 	private Abstraksjoner a = new Abstraksjoner();
-	private CardDeck cardDeck;
-	private Array<Player> players;
 	private Array<Card> cardsOnTable;
 
 	/**
@@ -28,10 +24,8 @@ public class Table {
 	 * @param p
 	 *            number of players.
 	 */
-	public Table(CardDeck d, Array<Player> p) {
-		cardDeck = d;
-		players = p;
-		cardsOnTable = new Array<Card>();
+	public Table(int sizeOfTable) {
+		cardsOnTable = new Array<Card>(sizeOfTable);
 	}
 
 	/**
@@ -44,24 +38,17 @@ public class Table {
 	}
 
 	/**
-	 * This method puts cards on the table.
-	 * 
-	 * @param numberOfCardsOnTheTable
-	 *            number of cards that are to be put on the table.
-	 */
-	public void addCardsToTable(int numberOfCardsOnTheTable) {
-		for (int i = 0; i < numberOfCardsOnTheTable; i++) {
-			addACardToTable();
-		}
-	}
-
-	/**
 	 * Ads a card to the table
 	 * 
 	 */
-	private void addACardToTable() {
-		cardsOnTable.add(cardDeck.takeCard(cardDeck.getDeckSize() - 1));
+	public void addACardToTable(Card card) {
+		cardsOnTable.add(card);
+		sort();
 	}
+
+	/**
+	 * sorting the deck
+	 */
 
 	/**
 	 * Finds the index of the specified card.
@@ -144,6 +131,12 @@ public class Table {
 
 	public Card getCardAtPosition(int i) {
 		return a.getCardAtPosition(i, cardsOnTable);
+	}
+
+	private void sort() {
+		Array<Card> temp;
+		temp = a.sortCardDeck(cardsOnTable);
+		cardsOnTable = temp;
 	}
 
 }

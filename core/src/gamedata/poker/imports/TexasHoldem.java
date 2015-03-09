@@ -1,8 +1,8 @@
 package gamedata.poker.imports;
 
 import game.structure.Constants;
+import perspective.player.Dealer;
 import perspective.player.Player;
-import card.structure.holder.Table;
 
 import com.badlogic.gdx.utils.Array;
 
@@ -18,7 +18,7 @@ public class TexasHoldem {
 		return con;
 	}
 
-	public int getWinner(Array<Player> players, Table t) {
+	public int getWinner(Array<Player> players, Dealer dealer) {
 		return 0;
 	}
 

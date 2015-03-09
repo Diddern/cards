@@ -25,7 +25,7 @@ public class Hand {
 	 */
 	public Hand(int size) {
 		this.size = size;
-		cardsOnHand = new Array<Card>();
+		cardsOnHand = new Array<Card>(size);
 	}
 
 	/**
@@ -58,6 +58,7 @@ public class Hand {
 	 */
 	public void addCardToHand(Card c) {
 		cardsOnHand.add(c);
+		sort();
 	}
 
 	/**
@@ -123,6 +124,12 @@ public class Hand {
 	 */
 	public Card getCardAtPosition(int i) {
 		return a.getCardAtPosition(i, cardsOnHand);
+	}
+
+	private void sort() {
+		Array<Card> temp;
+		temp = a.sortCardDeck(cardsOnHand);
+		cardsOnHand = temp;
 	}
 
 }

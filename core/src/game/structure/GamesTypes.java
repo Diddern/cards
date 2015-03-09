@@ -1,6 +1,7 @@
 package game.structure;
 
 import gamedata.poker.imports.TexasHoldem;
+import perspective.player.Dealer;
 import perspective.player.Player;
 import card.structure.deck.CardDeck;
 import card.structure.holder.Hand;
@@ -26,6 +27,7 @@ public class GamesTypes {
 	private TexasHoldem thisGame;
 	private Table t;
 	private CardDeck deck;
+	private Dealer dealer;
 
 	/**
 	 * Unfinished GameTypeChooser. Not sure how to make it abstract enough to
@@ -63,12 +65,6 @@ public class GamesTypes {
 		}
 	}
 
-	/****
-	 * 
-	 * 
-	 * 
-	 * dsda
-	 */
 	/**
 	 * Makes a CardDeck to the game.
 	 */
@@ -80,11 +76,16 @@ public class GamesTypes {
 	 * Makes a table.
 	 */
 	public void makeTable() {
-		t = new Table(deck, players);
+		t = new Table(thisGame.getConstants().getTableSize());
+	}
+
+	public void makeDealer() {
+		dealer = new Dealer(new Hand(thisGame.getConstants().getHandSize()), t,
+				deck);
 	}
 
 	public int getWinner() {
-		return thisGame.getWinner(players, t);
+		return thisGame.getWinner(players, dealer);
 	}
 
 }

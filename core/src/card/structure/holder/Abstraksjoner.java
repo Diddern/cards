@@ -1,10 +1,13 @@
 package card.structure.holder;
 
+import gamedata.poker.QuickSort;
 import card.structure.deck.Card;
 
 import com.badlogic.gdx.utils.Array;
 
 public class Abstraksjoner {
+
+	private QuickSort qs;
 
 	/**
 	 * checks if a card with this rank is on this hand.
@@ -92,6 +95,11 @@ public class Abstraksjoner {
 	 */
 	public Card getCardAtPosition(int i, Array<Card> cardDeck) {
 		return cardDeck.get(i);
+
+	}
+
+	public Array<Card> sortCardDeck(Array<Card> cards) {
+		return qs.sort(cards);
 
 	}
 
