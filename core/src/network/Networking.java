@@ -33,7 +33,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 public class Networking implements ApplicationListener {
+	// A camera with orthographic projection.
 	private OrthographicCamera camera;
+
 	private SpriteBatch batch;
 	private Skin skin;
 	private Stage stage;
@@ -88,6 +90,7 @@ public class Networking implements ApplicationListener {
 		// Print the contents of our array to a string. Yeah, should have used
 		// StringBuilder
 		String ipAddress = new String("");
+
 		for (String str : addresses) {
 			ipAddress = ipAddress + str + "\n";
 		}
