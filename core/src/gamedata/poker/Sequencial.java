@@ -75,7 +75,7 @@ public class Sequencial {
 			int d = getNumberOf(i - 1);
 			int e = getNumberOf(i);
 
-			if (a < b && b < c && c < d && d < e) {
+			if (a + 1 == b && b + 1 == c && c + 1 == d && d + 1 == e) {
 				hasStraight = true;
 			}
 		}
