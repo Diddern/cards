@@ -49,6 +49,7 @@ public class Networking implements ApplicationListener {
 
 	@Override
 	public void create() {
+
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight());
 		batch = new SpriteBatch();
