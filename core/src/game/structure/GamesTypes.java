@@ -63,6 +63,12 @@ public class GamesTypes {
 		}
 	}
 
+	/****
+	 * 
+	 * 
+	 * 
+	 * dsda
+	 */
 	/**
 	 * Makes a CardDeck to the game.
 	 */
