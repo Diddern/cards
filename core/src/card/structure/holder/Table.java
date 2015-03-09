@@ -106,6 +106,10 @@ public class Table {
 
 	}
 
+	public int getTableSize() {
+		return cardsOnTable.size;
+	}
+
 	/**
 	 * checks if a card with this rank is on this hand.
 	 * 

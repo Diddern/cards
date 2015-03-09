@@ -8,14 +8,13 @@ import com.badlogic.gdx.utils.Array;
 
 public class Types extends Pairs {
 	protected Array<Array<Card>> types;
-	private QuickSort qs;
 
 	public Types(Hand hand, Table table) {
 		super(hand, table);
-		qs = new QuickSort();
+		makeTypes();
 	}
 
-	public void getTypes() {
+	private void makeTypes() {
 		for (int i = 0; i < h.getHandSize(); i++) {
 			if (hasCardOfThisType(i)) {
 				types.add(getCardOfThisType(i));

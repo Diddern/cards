@@ -6,19 +6,17 @@ import card.structure.holder.Table;
 
 import com.badlogic.gdx.utils.Array;
 
-public class Pairs {
+public class Pairs extends Sequencial {
 
 	protected Array<Array<Card>> pairs;
-	protected Hand h;
-	protected Table t;
 
 	public Pairs(Hand hand, Table table) {
+		super(hand, table);
 		pairs = new Array<Array<Card>>();
-		h = hand;
-		t = table;
+		makePairs();
 	}
 
-	public void getPairs() {
+	private void makePairs() {
 		for (int i = 0; i < h.getHandSize(); i++) {
 			if (hasCardOfThisRank(i)) {
 				pairs.add(getCardsOfThisRank(i));
