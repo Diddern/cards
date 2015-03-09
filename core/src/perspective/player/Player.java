@@ -23,6 +23,8 @@ public class Player {
 			this.hand.addCardToHand(c);
 		}
 	}
+	
+	// another comment
 
 	public Hand lookAtHand() {
 		return this.hand;
