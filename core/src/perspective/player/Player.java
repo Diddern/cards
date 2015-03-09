@@ -13,7 +13,7 @@ public class Player {
 	private Hand hand;
 
 	public Player(Hand hand) {
-		hand = this.hand;
+		this.hand = hand;
 	}
 
 	public void giveCard(Card c) {
