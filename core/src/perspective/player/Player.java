@@ -6,6 +6,8 @@ import card.structure.holder.Hand;
 /**
  * Player has a hand. It should have all the abilities that a normal player has.
  * 
+ * Added a comment for show..
+ * 
  * @author Bobby
  *
  */
@@ -17,13 +19,13 @@ public class Player {
 	}
 
 	public void giveCard(Card c) {
-		if (!hand.isHandFull()) {
-			hand.addCardToHand(c);
+		if (!this.hand.isHandFull()) {
+			this.hand.addCardToHand(c);
 		}
 	}
 
 	public Hand lookAtHand() {
-		return hand;
+		return this.hand;
 	}
 
 }
