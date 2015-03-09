@@ -81,12 +81,13 @@ public class Network {
 			// Read to the next newline (\n) and display that text
 			// on labelMessage
 			labelMessage.setText(buffer.readLine());
+			listeningForSomeoneWhoHasMadeAMove();
 		}
 	}
 
 	// textMessage = new TextArea("", skin);
 	// textIPAddress = new TextArea("", skin);
-	public void listeningForSomeoneWhoHasMadeAMove() {
+	public void listeningForSomeoneWhoHasMadeAMove() throws IOException {
 		SocketHints socketHints = new SocketHints();
 		// Socket will time our in 4 seconds
 		socketHints.connectTimeout = 4000;
@@ -109,12 +110,8 @@ public class Network {
 															// line
 		}
 
-		try {
-			// write our entered message to the stream
-			socket.getOutputStream().write(textToSend.getBytes());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		// write our entered message to the stream
+		socket.getOutputStream().write(textToSend.getBytes());
 	}
 
 }
