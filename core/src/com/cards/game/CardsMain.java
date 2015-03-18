@@ -1,5 +1,7 @@
 package com.cards.game;
 
+import network.Networking;
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -24,24 +26,23 @@ public class CardsMain extends ApplicationAdapter {
 	@Override
 	public void create() {
 
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-		sprite = new Sprite(img);
-		sprite.setPosition(Gdx.graphics.getWidth() / 2 - sprite.getWidth() / 2,
-				Gdx.graphics.getHeight() / 2);
+		this.batch = new SpriteBatch();
+		this.img = new Texture("badlogic.jpg");
+		this.sprite = new Sprite(this.img);
+		this.sprite.setPosition(Gdx.graphics.getWidth() / 2 - this.sprite.getWidth() / 2, Gdx.graphics.getHeight() / 2);
 
-		world = new World(new Vector2(0, -98f), true);
+		this.world = new World(new Vector2(0, -98f), true);
 		BodyDef bodyDef = new BodyDef();
 		bodyDef.type = BodyDef.BodyType.DynamicBody;
-		bodyDef.position.set(sprite.getX(), sprite.getY());
-		body = world.createBody(bodyDef);
+		bodyDef.position.set(this.sprite.getX(), this.sprite.getY());
+		this.body = this.world.createBody(bodyDef);
 		PolygonShape shape = new PolygonShape();
-		shape.setAsBox(sprite.getWidth() / 2, sprite.getHeight() / 2);
+		shape.setAsBox(this.sprite.getWidth() / 2, this.sprite.getHeight() / 2);
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = shape;
 		fixtureDef.density = 1f;
 
-		Fixture fixture = body.createFixture(fixtureDef);
+		Fixture fixture = this.body.createFixture(fixtureDef);
 
 		shape.dispose();
 	}
@@ -49,20 +50,20 @@ public class CardsMain extends ApplicationAdapter {
 	@Override
 	public void render() {
 
-		world.step(Gdx.graphics.getDeltaTime(), 6, 2);
+		this.world.step(Gdx.graphics.getDeltaTime(), 6, 2);
 
-		sprite.setPosition(body.getPosition().x, body.getPosition().y);
+		this.sprite.setPosition(this.body.getPosition().x, this.body.getPosition().y);
 
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(sprite, sprite.getX(), sprite.getY());
-		batch.end();
+		this.batch.begin();
+		this.batch.draw(this.sprite, this.sprite.getX(), this.sprite.getY());
+		this.batch.end();
 	}
 
 	@Override
 	public void dispose() {
-		img.dispose();
-		world.dispose();
+		this.img.dispose();
+		this.world.dispose();
 	}
 }

@@ -52,19 +52,18 @@ public class Networking implements ApplicationListener {
 	@Override
 	public void create() {
 
-		camera = new OrthographicCamera(Gdx.graphics.getWidth(),
-				Gdx.graphics.getHeight());
-		batch = new SpriteBatch();
+		this.camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		this.batch = new SpriteBatch();
 
 		// Load our UI skin from file. Once again, I used the files included in
 		// the tests.
 		// Make sure default.fnt, default.png, uiskin.[atlas/json/png] are all
 		// added to your assets
-		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
-		stage = new Stage();
+		this.skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+		this.stage = new Stage();
 		// Wire the stage to receive input, as we are using Scene2d in this
 		// example
-		Gdx.input.setInputProcessor(stage);
+		Gdx.input.setInputProcessor(this.stage);
 
 		// The following code loops through the available network interfaces
 		// Keep in mind, there can be multiple interfaces per device, for
@@ -73,11 +72,9 @@ public class Networking implements ApplicationListener {
 		// In this case we only care about IPv4 address ( x.x.x.x format )
 		List<String> addresses = new ArrayList<String>();
 		try {
-			Enumeration<NetworkInterface> interfaces = NetworkInterface
-					.getNetworkInterfaces();
+			Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
 			for (NetworkInterface ni : Collections.list(interfaces)) {
-				for (InetAddress address : Collections.list(ni
-						.getInetAddresses())) {
+				for (InetAddress address : Collections.list(ni.getInetAddresses())) {
 					if (address instanceof Inet4Address) {
 						addresses.add(address.getHostAddress());
 					}
@@ -101,31 +98,30 @@ public class Networking implements ApplicationListener {
 		// probably pretty obvious
 		VerticalGroup vg = new VerticalGroup().space(3).pad(5).fill();// .space(2).pad(5).fill();//.space(3).reverse().fill();
 		// Set the bounds of the group to the entire virtual display
-		vg.setBounds(0, 0, VIRTUAL_SCREEN_WIDTH, VIRTUAL_SCREEN_HEIGHT);
+		vg.setBounds(0, 0, Networking.VIRTUAL_SCREEN_WIDTH, Networking.VIRTUAL_SCREEN_HEIGHT);
 
 		// Create our controls
-		labelDetails = new Label(ipAddress, skin);
-		labelMessage = new Label("Hello world", skin);
-		button = new TextButton("Send message", skin);
-		textIPAddress = new TextArea("", skin);
-		textMessage = new TextArea("", skin);
+		this.labelDetails = new Label(ipAddress, this.skin);
+		this.labelMessage = new Label("Hello world", this.skin);
+		this.button = new TextButton("Send message", this.skin);
+		this.textIPAddress = new TextArea("", this.skin);
+		this.textMessage = new TextArea("", this.skin);
 
 		// Add them to scene
-		vg.addActor(labelDetails);
-		vg.addActor(labelMessage);
-		vg.addActor(textIPAddress);
-		vg.addActor(textMessage);
-		vg.addActor(button);
+		vg.addActor(this.labelDetails);
+		vg.addActor(this.labelMessage);
+		vg.addActor(this.textIPAddress);
+		vg.addActor(this.textMessage);
+		vg.addActor(this.button);
 
 		// Add scene to stage
-		stage.addActor(vg);
+		this.stage.addActor(vg);
 
 		// Setup a viewport to map screen to a 480x640 virtual resolution
 		// As otherwise this is way too tiny on my 1080p android phone.
-		stage.setViewport(new StretchViewport(VIRTUAL_SCREEN_WIDTH,
-				VIRTUAL_SCREEN_HEIGHT));
-		stage.getCamera().position.set(VIRTUAL_SCREEN_WIDTH / 2,
-				VIRTUAL_SCREEN_HEIGHT / 2, 0);
+		this.stage.setViewport(new StretchViewport(Networking.VIRTUAL_SCREEN_WIDTH, Networking.VIRTUAL_SCREEN_HEIGHT));
+		this.stage.getCamera().position.set(Networking.VIRTUAL_SCREEN_WIDTH / 2, Networking.VIRTUAL_SCREEN_HEIGHT / 2,
+				0);
 
 		// Now we create a thread that will listen for incoming socket
 		// connections
@@ -137,14 +133,13 @@ public class Networking implements ApplicationListener {
 				// 0 means no timeout. Probably not the greatest idea in
 				// production!
 				serverSocketHint.acceptTimeout = 0;
-
-				// Create the socket server using TCP protocol and listening on
-				// 9021
-				// Only one app can listen to a port at a time, keep in mind
-				// many ports are reserved
-				// especially in the lower numbers ( like 21, 80, etc )
-				ServerSocket serverSocket = Gdx.net.newServerSocket(
-						Protocol.TCP, 9021, serverSocketHint);
+				/**
+				 * Create the socket server using TCP protocol and listening on
+				 * 9021 Only one app can listen to a port at a time, keep in
+				 * mind many ports are reserved especially in the lower numbers
+				 * ( like 21, 80, etc )
+				 */
+				ServerSocket serverSocket = Gdx.net.newServerSocket(Protocol.TCP, 9021, serverSocketHint);
 
 				// Loop forever
 				while (true) {
@@ -152,13 +147,12 @@ public class Networking implements ApplicationListener {
 					Socket socket = serverSocket.accept(null);
 
 					// Read data from the socket into a BufferedReader
-					BufferedReader buffer = new BufferedReader(
-							new InputStreamReader(socket.getInputStream()));
+					BufferedReader buffer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
 					try {
 						// Read to the next newline (\n) and display that text
 						// on labelMessage
-						labelMessage.setText(buffer.readLine());
+						Networking.this.labelMessage.setText(buffer.readLine());
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -167,22 +161,18 @@ public class Networking implements ApplicationListener {
 		}).start(); // And, start the thread running
 
 		// Wire up a click listener to our button
-		button.addListener(new ClickListener() {
+		this.button.addListener(new ClickListener() {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 
 				// When the button is clicked, get the message text or create a
 				// default string value
 				String textToSend = new String();
-				if (textMessage.getText().length() == 0) {
+				if (Networking.this.textMessage.getText().length() == 0) {
 					textToSend = "Doesn't say much but likes clicking buttons\n";
 				} else {
-					textToSend = textMessage.getText() + ("\n"); // Brute for a
-																	// newline
-																	// so
-																	// readline
-																	// gets a
-																	// line
+					textToSend = Networking.this.textMessage.getText() + ("\n");
+					// Brute for a newline so readline gets a line
 				}
 
 				SocketHints socketHints = new SocketHints();
@@ -190,8 +180,8 @@ public class Networking implements ApplicationListener {
 				socketHints.connectTimeout = 4000;
 				// create the socket and connect to the server entered in the
 				// text box ( x.x.x.x format ) on port 9021
-				Socket socket = Gdx.net.newClientSocket(Protocol.TCP,
-						textIPAddress.getText(), 9021, socketHints);
+				Socket socket = Gdx.net.newClientSocket(Protocol.TCP, Networking.this.textIPAddress.getText(), 9021,
+						socketHints);
 				try {
 					// write our entered message to the stream
 					socket.getOutputStream().write(textToSend.getBytes());
@@ -204,17 +194,17 @@ public class Networking implements ApplicationListener {
 
 	@Override
 	public void dispose() {
-		batch.dispose();
+		this.batch.dispose();
 	}
 
 	@Override
 	public void render() {
 		Gdx.gl.glClearColor(0.5f, 0.5f, 0.5f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.setProjectionMatrix(camera.combined);
-		batch.begin();
-		stage.draw();
-		batch.end();
+		this.batch.setProjectionMatrix(this.camera.combined);
+		this.batch.begin();
+		this.stage.draw();
+		this.batch.end();
 	}
 
 	@Override
