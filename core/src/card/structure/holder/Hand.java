@@ -77,8 +77,8 @@ public class Hand {
 	 *            the type that will be checked out.
 	 * @return the array of the types.
 	 */
-	public Array<Card> getCardsOfThisType(Card card) {
-		return a.getCardsOfThisType(card, cardsOnHand);
+	public Array<Card> getCardsOfThisSuit(Card card) {
+		return a.getCardsOfThisSuit(card, cardsOnHand);
 	}
 
 	/**

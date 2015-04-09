@@ -77,8 +77,8 @@ public class Table {
 	 *            the type that will be checked out.
 	 * @return the array of the types.
 	 */
-	public Array<Card> getCardsOfThisType(Card card) {
-		return a.getCardsOfThisType(card, cardsOnTable);
+	public Array<Card> getCardsOfThisSuit(Card card) {
+		return a.getCardsOfThisSuit(card, cardsOnTable);
 	}
 
 	/**
@@ -88,7 +88,7 @@ public class Table {
 	 *            the type to check up against
 	 * @return true if there is any.
 	 */
-	public boolean hasCardsOfThisType(Card card) {
+	public boolean hasCardsOfThisSuit(Card card) {
 		return a.hasCardsOfThisType(card, cardsOnTable);
 
 	}

@@ -45,7 +45,7 @@ public class Abstractions {
 	 * @return true if there is any.
 	 */
 	public boolean hasCardsOfThisType(Card type, Array<Card> cardDeck) {
-		return getCardsOfThisType(type, cardDeck).size != 0;
+		return getCardsOfThisSuit(type, cardDeck).size != 0;
 
 	}
 
@@ -56,7 +56,7 @@ public class Abstractions {
 	 *            the type that will be checked out.
 	 * @return the array of the types.
 	 */
-	public Array<Card> getCardsOfThisType(Card type, Array<Card> cardDeck) {
+	public Array<Card> getCardsOfThisSuit(Card type, Array<Card> cardDeck) {
 		Array<Card> types = new Array<Card>();
 		for (int i = 0; i < cardDeck.size; i++) {
 			if (cardDeck.get(i).sameSuit(type)) {
@@ -95,7 +95,6 @@ public class Abstractions {
 	 */
 	public Card getCardAtPosition(int i, Array<Card> cardDeck) {
 		return cardDeck.get(i);
-
 	}
 
 	public Array<Card> sortCardDeck(Array<Card> cards) {

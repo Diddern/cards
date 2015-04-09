@@ -23,11 +23,11 @@ public class Types extends Pairs {
 	}
 
 	private boolean hasCardOfThisType(int i) {
-		return t.hasCardsOfThisType(h.getCardAtPosition(i));
+		return t.hasCardsOfThisSuit(h.getCardAtPosition(i));
 	}
 
 	private Array<Card> getCardOfThisType(int i) {
-		return t.getCardsOfThisType(h.getCardAtPosition(i));
+		return t.getCardsOfThisSuit(h.getCardAtPosition(i));
 	}
 
 }
