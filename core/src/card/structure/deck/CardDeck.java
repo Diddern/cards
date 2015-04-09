@@ -4,34 +4,32 @@ import com.badlogic.gdx.utils.Array;
 
 public class CardDeck {
 
-	/**
-	 * ArrayListen er for å holde kortene. Korttypene er puttet i en streng
-	 * liste for å gjør initialiseringen enklere.
+	/*
+	 * Array containing the cards in the deck
 	 */
 	private Array<Card> cardDeck = new Array<Card>();
+	
+	/*
+	 * String array containing the possible suits, in order to simplify initializing
+	 */
 	String[] cardTypes = { "Spade", "Hearts", "Diamonds", "Clovers", "Joker" };
 
 	/**
-	 * Konstruktøren trenger å få inn en boolean om den skal ta med jokere eller
-	 * ikke. Utenom det så lager den en standard fransk kortstokk.
-	 * 
-	 * @param withJoker
-	 *            Boolean som bestemmer om du vil ha med jokere eller ikke.
-	 *            False er om du ikke vil ha med jokere, true om du vil ha med
-	 *            jokere.
+	 * Constructor creating a card deck with or without jokers.
+	 * @param withJoker Whether or not the deck should contain jokers.
 	 */
 	public CardDeck(boolean withJoker) {
 		if (withJoker == false) {
 			makeCardDeck();
 		} else {
-			makeCardDeckWithJoker();
+			makeCardDeckWithJokers();
 		}
 	}
 
 	/**
-	 * Den private metoden som lager kortdecket med joker.
+	 * Creating a new card deck containing two jokers.
 	 */
-	private void makeCardDeckWithJoker() {
+	private void makeCardDeckWithJokers() {
 		makeCardDeck();
 		for (int i = 0; i < 2; i++) {
 			cardDeck.add(new Card(i, cardTypes[4]));
@@ -39,7 +37,7 @@ public class CardDeck {
 	}
 
 	/**
-	 * Den private metoden som lager kortdecket uten joker.
+	 * Creating a new classic French card deck without jokers.
 	 */
 	private void makeCardDeck() {
 		for (int i = 0; i < 4; i++) {
@@ -50,71 +48,54 @@ public class CardDeck {
 	}
 
 	/**
-	 * Metoden tar et kort ut av kortstokken. Det betyr at kortet er fjernet fra
-	 * kortstokken når det tas ut.
-	 * 
-	 * @param posisjon
-	 *            : hvor du fjerner kortet ifra.
-	 * @return kortet du fjernet. vist det ikke er et kort å fjerne så får du
-	 *         NULL.
+	 * Removing a card from the deck, meaning that the card is no longer contained within the deck after running this method.
+	 * @param position The index of the card to be removed
+	 * @return The removed card if the parameterized index is within the range of the deck, null otherwise
 	 */
-	public Card takeCard(int posisjon) {
-		if (posisjon < cardDeck.size) {
-			Card card = lookAtCard(posisjon);
-			removeCard(posisjon);
+	public Card takeCard(int position) {
+		if (position < cardDeck.size) {
+			Card card = lookAtCard(position);
+			removeCard(position);
 			return card;
 		} else
 			return null;
 	}
 
 	/**
-	 * fjerner kortet fra posisjonen spesifisert.
-	 * 
-	 * @param posisjon
-	 *            : posisjonen kortet blir fjernet ifra.
+	 * Removes a card from a given index
+	 * @param position The index of the card to be removed
 	 */
-
-	public void removeCard(int posisjon) {
-		cardDeck.removeIndex(posisjon);
+	public void removeCard(int position) {
+		cardDeck.removeIndex(position);
 	}
-
+	
 	/**
-	 * Metoden putter kortet tilbake i enden av kortstokken.
-	 * 
-	 * 
-	 * @param card
-	 *            : Kortet som skal bli puttet tilbake.
+	 * Puts a given card back into the deck
+	 * @param card The card to reinsert
 	 */
-	public void putCardBackInn(Card card) {
+	public void putCardBackIn(Card card) {
 		cardDeck.add(card);
-		;
-		;
 	}
 
 	/**
-	 * Returnerer hvor mange elementer det er i listen.
-	 * 
-	 * @return hvor mange elementer det er i listen.
+	 * Retrieves the size of the deck
+	 * @return The size of the deck
 	 */
-
 	public int getDeckSize() {
 		return cardDeck.size;
 	}
 
 	/**
-	 * Viser kortet ved en spesiel posisjon.
-	 * 
-	 * @param posisjon
-	 *            : posisjonen kortet er i
-	 * @return Kortet ved den posisjonen.
+	 * Allows us to peek at a card in a given position
+	 * @param position The index of the card we wish to peek at
+	 * @return The card in the given position
 	 */
-	public Card lookAtCard(int posisjon) {
-		return cardDeck.get(posisjon);
+	public Card lookAtCard(int position) {
+		return cardDeck.get(position);
 	}
 
 	/**
-	 * Stokker kortstokket slik at den blir random.
-	 * 
+	 * Shuffles the deck ten times.
 	 */
 	public void shuffleCards() {
 		for (int i = 0; i < 10; i++) {
