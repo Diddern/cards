@@ -41,7 +41,7 @@ import card.structure.holder.Table;
  * @author Bobby
  *
  */
-public class PokerData extends Types {
+public class PokerData extends Suits {
 	public PokerData(Hand hand, Table table) {
 		super(hand, table);
 	}

@@ -6,10 +6,10 @@ import card.structure.holder.Table;
 
 import com.badlogic.gdx.utils.Array;
 
-public class Types extends Pairs {
-	protected Array<Array<Card>> types;
+public class Suits extends Pairs {
+	protected Array<Array<Card>> suits;
 
-	public Types(Hand hand, Table table) {
+	public Suits(Hand hand, Table table) {
 		super(hand, table);
 		makeListOfSuits();
 	}
@@ -17,7 +17,7 @@ public class Types extends Pairs {
 	private void makeListOfSuits() {
 		for (int i = 0; i < h.getHandSize(); i++) {
 			if (hasCardOfThisSuit(i)) {
-				types.add(getCardOfThisSuit(i));
+				suits.add(getCardOfThisSuit(i));
 			}
 		}
 	}
