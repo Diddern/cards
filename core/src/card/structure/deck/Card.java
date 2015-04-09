@@ -8,12 +8,12 @@ package card.structure.deck;
  */
 public class Card {
 
-	private String type;
+	private String suit;
 	private int number;
 
 	public Card(int number, String type) {
 		this.number = number;
-		this.type = type;
+		this.suit = type;
 	}
 
 	/**
@@ -23,7 +23,7 @@ public class Card {
 	 * @return
 	 */
 	public String getType() {
-		return type;
+		return suit;
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class Card {
 	 */
 	public boolean equalsTo(Card card) {
 		if (sameRank(card)) {
-			if (sameType(card))
+			if (sameSuit(card))
 				return true;
 		}
 		return false;
@@ -56,7 +56,7 @@ public class Card {
 
 	}
 
-	public boolean sameType(Card c) {
-		return c.type.equals(type);
+	public boolean sameSuit(Card c) {
+		return c.suit.equals(suit);
 	}
 }

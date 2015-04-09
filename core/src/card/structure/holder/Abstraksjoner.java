@@ -59,7 +59,7 @@ public class Abstraksjoner {
 	public Array<Card> getCardsOfThisType(Card type, Array<Card> cardDeck) {
 		Array<Card> types = new Array<Card>();
 		for (int i = 0; i < cardDeck.size; i++) {
-			if (cardDeck.get(i).sameType(type)) {
+			if (cardDeck.get(i).sameSuit(type)) {
 				types.add(cardDeck.get(i));
 			}
 		}
