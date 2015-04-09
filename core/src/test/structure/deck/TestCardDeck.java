@@ -101,7 +101,7 @@ public class TestCardDeck {
 			assertFalse(cardDeckWithJoker.get(q).lookAtCard(putRandom)
 					.equals(card));
 
-			cardDeckWithJoker.get(q).putCardBackInn(card);
+			cardDeckWithJoker.get(q).putCardBackIn(card);
 			assertTrue(cardDeckWithJoker.get(q).lookAtCard(randomsize)
 					.equals(card));
 		}
