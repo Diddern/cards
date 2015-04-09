@@ -31,8 +31,8 @@ public class Pairs extends Sequencial {
 
 	private void makePairs() {
 		for (int i = 0; i < h.getHandSize(); i++) {
-			if (hasCardOfThisSuit(i)) {
-				pairs.add(getCardsOfThisSuit(i));
+			if (hasCardOfThisValue(i)) {
+				pairs.add(getCardsOfThisValue(i));
 			}
 		}
 	}
@@ -46,7 +46,7 @@ public class Pairs extends Sequencial {
 	 * @return true if this card exists.
 	 * 
 	 */
-	private boolean hasCardOfThisSuit(int i) {
+	private boolean hasCardOfThisValue(int i) {
 		return t.hasCardOfThisRank(h.getCardAtPosition(i));
 	}
 
@@ -59,7 +59,7 @@ public class Pairs extends Sequencial {
 	 * @return the card that is the same suit
 	 */
 
-	private Array<Card> getCardsOfThisSuit(int i) {
+	private Array<Card> getCardsOfThisValue(int i) {
 		return t.getCardsOfThisRank(h.getCardAtPosition(i));
 	}
 

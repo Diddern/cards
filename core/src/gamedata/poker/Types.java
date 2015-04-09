@@ -11,22 +11,22 @@ public class Types extends Pairs {
 
 	public Types(Hand hand, Table table) {
 		super(hand, table);
-		makeTypes();
+		makeListOfSuits();
 	}
 
-	private void makeTypes() {
+	private void makeListOfSuits() {
 		for (int i = 0; i < h.getHandSize(); i++) {
-			if (hasCardOfThisType(i)) {
-				types.add(getCardOfThisType(i));
+			if (hasCardOfThisSuit(i)) {
+				types.add(getCardOfThisSuit(i));
 			}
 		}
 	}
 
-	private boolean hasCardOfThisType(int i) {
+	private boolean hasCardOfThisSuit(int i) {
 		return t.hasCardsOfThisSuit(h.getCardAtPosition(i));
 	}
 
-	private Array<Card> getCardOfThisType(int i) {
+	private Array<Card> getCardOfThisSuit(int i) {
 		return t.getCardsOfThisSuit(h.getCardAtPosition(i));
 	}
 
