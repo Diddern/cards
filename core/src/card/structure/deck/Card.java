@@ -11,18 +11,18 @@ public class Card {
 	private String suit;
 	private int number;
 
-	public Card(int number, String type) {
+	public Card(int number, String suit) {
 		this.number = number;
-		this.suit = type;
+		this.suit = suit;
 	}
 
 	/**
 	 * This method returns the type of card it is. The choices are Spade,
 	 * Hearts, Diamonds, Clovers, Joker.
 	 * 
-	 * @return
+	 * @return The card's suit
 	 */
-	public String getType() {
+	public String getSuit() {
 		return suit;
 	}
 
@@ -51,11 +51,21 @@ public class Card {
 		return false;
 	}
 
+	/**
+	 * Checks if two cards have the same value
+	 * @param c Other card
+	 * @return true if both cards have the same value, i.e. they are the same card (but in different suits, unless playing multiple decks)
+	 */
 	public boolean sameRank(Card c) {
 		return c.getNumber() == number;
 
 	}
 
+	/**
+	 * Checks if two cards are the same suit
+	 * @param c Other card
+	 * @return true if both cards have the same suit
+	 */
 	public boolean sameSuit(Card c) {
 		return c.suit.equals(suit);
 	}

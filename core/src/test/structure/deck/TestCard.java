@@ -32,7 +32,7 @@ public class TestCard {
 	public void testGetCards() {
 		for (int i = 0; i < size; i++) {
 			assertTrue(cards.get(i).getNumber() == numbers[i]);
-			assertTrue(cards.get(i).getType()
+			assertTrue(cards.get(i).getSuit()
 					.equals("kortnummer" + "" + numbers[i]));
 		}
 	}
