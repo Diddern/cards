@@ -5,9 +5,9 @@ import card.structure.deck.Card;
 
 import com.badlogic.gdx.utils.Array;
 
-public class Abstraksjoner {
+public class Abstractions {
 
-	private QuickSort qs;
+	private QuickSort qs = new QuickSort();
 
 	/**
 	 * checks if a card with this rank is on this hand.

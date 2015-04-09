@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.Array;
  */
 public class Table {
 
-	private Abstraksjoner a = new Abstraksjoner();
+	private Abstractions a = new Abstractions();
 	private Array<Card> cardsOnTable;
 
 	/**
