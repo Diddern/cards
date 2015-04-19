@@ -10,96 +10,105 @@ public class Abstractions {
 	private QuickSort qs = new QuickSort();
 
 	/**
-	 * checks if a card with this rank is on this hand.
-	 * 
-	 * @param c
-	 *            Card that will be checked
-	 * @return true if it exists.
+	 * Checks the deck for cards of the same value as the parameterized one
+	 * @param card The card for which we compare value
+	 * @param cardDeck The card deck to compare against
+	 * @return true if any card in the deck matches the value of the parameterized card, false otherwise
 	 */
-	public boolean hasCardOfThisRank(Card card, Array<Card> cardDeck) {
-		return getCardsOfThisRank(card, cardDeck).size != 0;
-	}
-
-	/**
-	 * returns an array with the cards with the rank of this card
-	 * 
-	 * @param card
-	 *            the card that will be checked
-	 * @return an array with the cards of this rank
-	 */
-	public Array<Card> getCardsOfThisRank(Card card, Array<Card> cardDeck) {
-		Array<Card> ranks = new Array<Card>();
+	public boolean hasCardOfThisValue(Card card, Array<Card> cardDeck) {
 		for (int i = 0; i < cardDeck.size; i++) {
 			if (cardDeck.get(i).sameRank(card)) {
-				ranks.add(cardDeck.get(i));
+				return true;
 			}
 		}
-		return ranks;
+		return false;
 	}
 
 	/**
-	 * Checks if there is any cards of this type on your hand.
-	 * 
-	 * @param type
-	 *            the type to check up against
-	 * @return true if there is any.
+	 * Returns all the cards in the deck with the same value as the parameterized one
+	 * @param card The card for which we compare value
+	 * @param cardDeck The card deck to compare against
+	 * @return An array containing all matching-valued cards in the deck
 	 */
-	public boolean hasCardsOfThisType(Card type, Array<Card> cardDeck) {
-		return getCardsOfThisSuit(type, cardDeck).size != 0;
-
-	}
-
-	/**
-	 * sends an array of the cards of this type.
-	 * 
-	 * @param type
-	 *            the type that will be checked out.
-	 * @return the array of the types.
-	 */
-	public Array<Card> getCardsOfThisSuit(Card type, Array<Card> cardDeck) {
-		Array<Card> types = new Array<Card>();
+	public Array<Card> getCardsOfThisValue(Card card, Array<Card> cardDeck) {
+		Array<Card> matchingValues = new Array<Card>();
 		for (int i = 0; i < cardDeck.size; i++) {
-			if (cardDeck.get(i).sameSuit(type)) {
-				types.add(cardDeck.get(i));
+			if (cardDeck.get(i).sameRank(card)) {
+				matchingValues.add(cardDeck.get(i));
 			}
 		}
-		return types;
+		return matchingValues;
 	}
 
 	/**
-	 * This method returns the biggest card on the deck.
-	 * 
-	 * @return The biggest card on deck
+	 * Checks the deck for cards of the same suit as the parameterized one
+	 * @param card The card for which we compare suit
+	 * @param cardDeck The card deck to compare against
+	 * @return true if any card in the deck matches the suit of the parameterized card, false otherwise
+	 */
+	public boolean hasCardsOfThisSuit(Card card, Array<Card> cardDeck) {
+		for (int i = 0; i < cardDeck.size; i++) {
+			if (cardDeck.get(i).sameSuit(card)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Returns all the cards in the deck with the same suit as the parameterized one
+	 * @param card The card for which we compare suit
+	 * @param cardDeck The card deck to compare against
+	 * @return An array containing all matching-suited cards in the deck
+	 */
+	public Array<Card> getCardsOfThisSuit(Card card, Array<Card> cardDeck) {
+		Array<Card> matchingSuits = new Array<Card>();
+		for (int i = 0; i < cardDeck.size; i++) {
+			if (cardDeck.get(i).sameSuit(card)) {
+				matchingSuits.add(cardDeck.get(i));
+			}
+		}
+		return matchingSuits;
+	}
+
+	/**
+	 * Finds the largest valued card in the deck
+	 * @param cardDeck The card deck to evaluate
+	 * @return The card in the deck with the largest value
 	 */
 	public Card getBiggestCardOnHand(Array<Card> cardDeck) {
-		int score = 0;
+		int largestValue = 0;
 		int index = 0;
 		for (int i = 0; i < cardDeck.size; i++) {
-			if (cardDeck.get(i).getNumber() >= score) {
+			if (cardDeck.get(i).getNumber() >= largestValue) {
 				index = i;
-				score = cardDeck.get(index).getNumber();
+				largestValue = cardDeck.get(index).getNumber();
 			}
 
 		}
 		return cardDeck.get(index);
 	}
-
+	
 	/**
-	 * Returns a card at the specified position in the deck you give
-	 * 
-	 * @param i
-	 *            position
-	 * @param cardDeck
-	 *            the deck you give
-	 * @return the specific card.
+	 * Returns the card at the given positional index
+	 * @param i index of the card we want
+	 * @param cardDeck The deck in which to look for our card
+	 * @return The card at index i
 	 */
 	public Card getCardAtPosition(int i, Array<Card> cardDeck) {
 		return cardDeck.get(i);
+		/*
+		 * Perhaps this should throw some IndexOutOfBoundsException?
+		 */
 	}
 
+	/**
+	 * Sorts the deck (or part of the deck) using Quicksort
+	 * @param cards The unsorted deck
+	 * @return A sorted representation of the unsorted input
+	 */
 	public Array<Card> sortCardDeck(Array<Card> cards) {
 		return qs.sort(cards);
-
 	}
 
 }

@@ -51,7 +51,7 @@ public class Hand {
 
 	/**
 	 * if there is space left in the hand, then a card will be added to the
-	 * hand. Does not check if the hand is full.
+	 * hand. Does not check if the hand is full. Sorts the hand after.
 	 * 
 	 * @param c
 	 *            the card that will be added
@@ -62,70 +62,62 @@ public class Hand {
 	}
 
 	/**
-	 * This method returns the biggest card on the deck.
+	 * This method returns the biggest card on the hand.
 	 * 
-	 * @return The biggest card on deck
+	 * @return The biggest card on hand
 	 */
 	public Card getBiggestCardOnHand() {
 		return a.getBiggestCardOnHand(cardsOnHand);
 	}
 
 	/**
-	 * sends an array of the cards of this type.
-	 * 
-	 * @param type
-	 *            the type that will be checked out.
-	 * @return the array of the types.
+	 * Gets all cards on hand with the same suit as the parameterized one
+	 * @param card The card for which we compare suits
+	 * @return All cards of the same suit
 	 */
 	public Array<Card> getCardsOfThisSuit(Card card) {
 		return a.getCardsOfThisSuit(card, cardsOnHand);
 	}
 
 	/**
-	 * Checks if there is any cards of this type on your hand.
-	 * 
-	 * @param type
-	 *            the type to check up against
-	 * @return true if there is any.
+	 * Checks if there are any cards in the deck with the same suit as the parameterized card
+	 * @param card The card for which we compare suits
+	 * @return true if any card in the deck has the same suit, false otherwise
 	 */
-	public boolean hasCardsOfThisType(Card card) {
-		return a.hasCardsOfThisType(card, cardsOnHand);
-
+	public boolean hasCardsOfThisSuit(Card card) {
+		return a.hasCardsOfThisSuit(card, cardsOnHand);
+	}
+	
+	/**
+	 * Checks if there are any cards in the deck with the same value as the parameterized card
+	 * @param card The card for which we compare values
+	 * @return true if any card in the deck has the same value, false otherwise
+	 */
+	public boolean hasCardOfThisValue(Card card) {
+		return a.hasCardOfThisValue(card, cardsOnHand);
 	}
 
 	/**
-	 * checks if a card with this rank is on this hand.
-	 * 
-	 * @param c
-	 *            Card that will be checked
-	 * @return true if it exists.
+	 * Gets all cards on hand with the same value as the parameterized one
+	 * @param card The card for which we compare values
+	 * @return All cards of the same value
 	 */
-	public boolean hasCardOfThisRank(Card card) {
-		return a.hasCardOfThisRank(card, cardsOnHand);
+	public Array<Card> getCardsOfThisValue(Card card) {
+		return a.getCardsOfThisValue(card, cardsOnHand);
 	}
 
 	/**
-	 * returns an array of the cards with the rank of this card
-	 * 
-	 * @param card
-	 *            the card that will be checked
-	 * @return an array with the cards of this rank
-	 */
-	public Array<Card> getCardsOfThisRank(Card card) {
-		return a.getCardsOfThisRank(card, cardsOnHand);
-	}
-
-	/**
-	 * Returns a card at the specified position in the deck you give
-	 * 
-	 * @param i
-	 *            position
-	 * @return the specific card.
+	 * Returns the card at the given positional index
+	 * @param i index of the card we want
+	 * @return The card at index i
 	 */
 	public Card getCardAtPosition(int i) {
 		return a.getCardAtPosition(i, cardsOnHand);
 	}
 
+	/**
+	 * Sorts the hand using the sorting algorithm specified in class Abstractions.
+	 */
 	private void sort() {
 		Array<Card> temp;
 		temp = a.sortCardDeck(cardsOnHand);

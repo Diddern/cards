@@ -89,7 +89,7 @@ public class Table {
 	 * @return true if there is any.
 	 */
 	public boolean hasCardsOfThisSuit(Card card) {
-		return a.hasCardsOfThisType(card, cardsOnTable);
+		return a.hasCardsOfThisSuit(card, cardsOnTable);
 
 	}
 
@@ -105,7 +105,7 @@ public class Table {
 	 * @return true if it exists.
 	 */
 	public boolean hasCardOfThisRank(Card card) {
-		return a.hasCardOfThisRank(card, cardsOnTable);
+		return a.hasCardOfThisValue(card, cardsOnTable);
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class Table {
 	 * @return an array with the cards of this rank
 	 */
 	public Array<Card> getCardsOfThisRank(Card card) {
-		return a.getCardsOfThisRank(card, cardsOnTable);
+		return a.getCardsOfThisValue(card, cardsOnTable);
 	}
 
 	/**
