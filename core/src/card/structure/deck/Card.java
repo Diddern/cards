@@ -9,10 +9,10 @@ package card.structure.deck;
 public class Card {
 
 	private String suit;
-	private int number;
+	private int value;
 
-	public Card(int number, String suit) {
-		this.number = number;
+	public Card(int value, String suit) {
+		this.value = value;
 		this.suit = suit;
 	}
 
@@ -27,13 +27,15 @@ public class Card {
 	}
 
 	/**
-	 * This method returns the number of the card. It is between 0 to 12, where
+	 * This method returns the value of the card. It is between 0 to 12, where
 	 * 0 is Ace, 10 is jack, 11 is queen, and 12 is king.
+	 * 
+	 * Note that this also means that the value 1 in our representation is equivalent to 2 and so forth. 
 	 * 
 	 * @return an integer from 0 to 12
 	 */
-	public int getNumber() {
-		return number;
+	public int getValue() {
+		return value;
 	}
 
 	/**
@@ -57,7 +59,7 @@ public class Card {
 	 * @return true if both cards have the same value, i.e. they are the same card (but in different suits, unless playing multiple decks)
 	 */
 	public boolean sameRank(Card c) {
-		return c.getNumber() == number;
+		return c.getValue() == value;
 
 	}
 

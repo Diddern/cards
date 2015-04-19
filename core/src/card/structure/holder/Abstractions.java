@@ -80,9 +80,9 @@ public class Abstractions {
 		int largestValue = 0;
 		int index = 0;
 		for (int i = 0; i < cardDeck.size; i++) {
-			if (cardDeck.get(i).getNumber() >= largestValue) {
+			if (cardDeck.get(i).getValue() >= largestValue) {
 				index = i;
-				largestValue = cardDeck.get(index).getNumber();
+				largestValue = cardDeck.get(index).getValue();
 			}
 
 		}

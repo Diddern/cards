@@ -49,9 +49,9 @@ public class TestCardDeck {
 							mellom);
 					Card newCard = new Card(k, cardTypes[i]);
 
-					assertTrue(cardWJ.getNumber() == newCard.getNumber());
+					assertTrue(cardWJ.getValue() == newCard.getValue());
 					assertTrue(cardWJ.getSuit().equals(newCard.getSuit()));
-					assertTrue(card.getNumber() == newCard.getNumber());
+					assertTrue(card.getValue() == newCard.getValue());
 					assertTrue(card.getSuit().equals(newCard.getSuit()));
 					mellom++;
 				}
@@ -60,7 +60,7 @@ public class TestCardDeck {
 			for (int i = 0; i < 2; i++) {
 				Card cardWJ = cardDeckWithJoker.get(mellom).lookAtCard(mellom);
 				Card newCard = new Card(i, cardTypes[4]);
-				assertTrue(cardWJ.getNumber() == newCard.getNumber());
+				assertTrue(cardWJ.getValue() == newCard.getValue());
 				assertTrue(cardWJ.getSuit().equals(newCard.getSuit()));
 				mellom++;
 			}
@@ -74,9 +74,9 @@ public class TestCardDeck {
 			int randomInterval = r.nextInt(sizes - 1);
 			Card card = cardDeckWithJoker.get(q).takeCard(randomInterval);
 
-			int newCardNumber = card.getNumber();
+			int newCardNumber = card.getValue();
 			int cardNumber = cardDeckWithJoker.get(q)
-					.lookAtCard(randomInterval).getNumber();
+					.lookAtCard(randomInterval).getValue();
 
 			String newCardType = card.getSuit();
 			String cardType = cardDeckWithJoker.get(q)

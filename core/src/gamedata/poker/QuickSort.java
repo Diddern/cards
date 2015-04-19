@@ -22,18 +22,18 @@ public class QuickSort {
 	private void quicksort(int low, int high) {
 		int i = low, j = high;
 		// Get the pivot element from the middle of the list
-		int pivot = cards.get(low + (high - low) / 2).getNumber();
+		int pivot = cards.get(low + (high - low) / 2).getValue();
 
 		// Divide into two lists
 		while (i <= j) {
 			// If the current value from the left list is smaller then the pivot
 			// element then get the next element from the left list
-			while (cards.get(i).getNumber() < pivot) {
+			while (cards.get(i).getValue() < pivot) {
 				i++;
 			}
 			// If the current value from the right list is larger then the pivot
 			// element then get the next element from the right list
-			while (cards.get(j).getNumber() > pivot) {
+			while (cards.get(j).getValue() > pivot) {
 				j--;
 			}
 

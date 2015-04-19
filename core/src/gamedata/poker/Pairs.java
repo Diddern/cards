@@ -105,10 +105,10 @@ public class Pairs extends Sequencial {
 	public boolean fourOfAKind() {
 		if (hasPairs()) {
 			if (pairs.get(0).size == 4) {
-				int card1 = pairs.get(0).get(0).getNumber();
-				int card2 = pairs.get(0).get(1).getNumber();
-				int card3 = pairs.get(0).get(2).getNumber();
-				int card4 = pairs.get(0).get(3).getNumber();
+				int card1 = pairs.get(0).get(0).getValue();
+				int card2 = pairs.get(0).get(1).getValue();
+				int card3 = pairs.get(0).get(2).getValue();
+				int card4 = pairs.get(0).get(3).getValue();
 				if (card1 == card2 && card2 == card3 && card3 == card4)
 					return true;
 			}
@@ -125,10 +125,10 @@ public class Pairs extends Sequencial {
 	public boolean twoPairs() {
 		if (hasPairs()) {
 			if (pairs.size == 2) {
-				int card1 = pairs.get(0).get(0).getNumber();
-				int card2 = pairs.get(0).get(1).getNumber();
-				int card3 = pairs.get(1).get(2).getNumber();
-				int card4 = pairs.get(1).get(3).getNumber();
+				int card1 = pairs.get(0).get(0).getValue();
+				int card2 = pairs.get(0).get(1).getValue();
+				int card3 = pairs.get(1).get(2).getValue();
+				int card4 = pairs.get(1).get(3).getValue();
 				if (!(card1 == card2 && card3 == card4 && card3 != card2))
 					return true;
 			}

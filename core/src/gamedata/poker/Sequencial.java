@@ -70,7 +70,7 @@ public class Sequencial {
 	 * @return the number of the card at that position.
 	 */
 	private int getCardNumber(int i, Table t) {
-		return t.getCardAtPosition(i).getNumber();
+		return t.getCardAtPosition(i).getValue();
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class Sequencial {
 	 */
 
 	private int getCardNumber(int i, Hand h) {
-		return h.getCardAtPosition(i).getNumber();
+		return h.getCardAtPosition(i).getValue();
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class Sequencial {
 	 * @return the number.
 	 */
 	private int getNumberOf(int i) {
-		return sequencial.get(i).getNumber();
+		return sequencial.get(i).getValue();
 	}
 
 	/**
